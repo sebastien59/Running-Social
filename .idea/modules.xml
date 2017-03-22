@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file:///Volumes/Data/Sebastien/Documents/IG2I/Cours/L4/AppliMobil/Projet/SocialRunning/SocialRunning.iml" filepath="/Volumes/Data/Sebastien/Documents/IG2I/Cours/L4/AppliMobil/Projet/SocialRunning/SocialRunning.iml" />
       <module fileurl="file://$PROJECT_DIR$/SocialRunning.iml" filepath="$PROJECT_DIR$/SocialRunning.iml" />
+      <module fileurl="file:///Volumes/Data/Sebastien/Documents/IG2I/Cours/L4/AppliMobil/Projet/SocialRunning/app/app.iml" filepath="/Volumes/Data/Sebastien/Documents/IG2I/Cours/L4/AppliMobil/Projet/SocialRunning/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

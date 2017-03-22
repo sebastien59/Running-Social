@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String p = edtPasse.getText().toString();
     if(btnConnect.getId() == view.getId()){
         //action à faire quand on clique sur le bouton connexion
+        attemptLogin("https://socialrunning.merchez.com/authenticate");
         Log.i("debug","bouton de connexion");
     }
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
+                Log.i("DEBUT", "test");
                 try {
                     response = APICall.GET(client, RequestBuilder.buildURL());
                     //Parse the response string here
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     response = APICall.POST(
                             client,
                             HttpUrl.parse(params[0]),
-                            RequestBuilder.LoginBody(email, password,"token"));
+                            RequestBuilder.LoginBody(email, password));
 
                     Log.d("Response", response);
                 } catch (IOException e) {

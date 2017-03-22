@@ -9,13 +9,12 @@ import okhttp3.*;
 public class RequestBuilder {
 
     //Login request body
-    public static RequestBody LoginBody(String username, String password, String token) {
+    public static RequestBody LoginBody(String email, String password) {
         return new FormBody.Builder()
                 .add("action", "login")
                 .add("format", "json")
-                .add("username", username)
+                .add("email", email)
                 .add("password", password)
-                .add("logintoken", token)
                 .build();
     }
 
