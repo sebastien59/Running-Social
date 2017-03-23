@@ -3,7 +3,7 @@
     <string name="fb_button">FACEBOOK LOGIN</string>
     <string name="connect_button">SE CONNECTER</string>
     <string name="memo_checkbox">Mémoriser mot de passe</string>
-    <string name="email_text">E-mail</string>
+    <string name="email_text">Adresse Mail</string>
     <string name="password_text">Mot de passe</string>
     <string name="passwordforgotten_link">Mot de passe oublié</string>
 </resources>
