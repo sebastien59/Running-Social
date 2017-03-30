@@ -6,4 +6,22 @@
     <string name="email_text">Adresse Mail</string>
     <string name="password_text">Mot de passe</string>
     <string name="passwordforgotten_link">Mot de passe oublié</string>
+
+
+    <!-- Network -->
+    <string name="no_network_dialog_message">Réseau internet indisponible</string>
+    <string name="no_network_dialog_title">Pas de réseau</string>
+    <string name="logo_desc">Logo</string>
+    <string name="register_link">S\'inscrire</string>
+    <string name="register_firstname">Prénom</string>
+    <string name="register_lastname">Nom</string>
+    <string name="register_email">Adresse Mail</string>
+    <string name="register_password">Mot de passe</string>
+    <string name="register_passwordConf">Confirmation mot de passe</string>
+    <string name="register_birthday">Date de naissance</string>
+    <string name="register_zone">Zone de recherche (km)</string>
+    <string name="register_button">S\'inscrire</string>
+    <string name="register_minValueZone">0</string>
+    <string name="connection_error_dialog_message">Une erreur de connexion s\'est produite</string>
+    <string name="connection_error_dialog_title">Connexion</string>
 </resources>

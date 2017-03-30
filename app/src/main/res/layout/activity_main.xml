@@ -7,16 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.merchez.socialrunning.socialrunning.MainActivity">
-
-    <Button
-        android:text="@string/fb_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_connectfb"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp" />
+    tools:context="com.merchez.socialrunning.socialrunning.MainActivity"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:onClick=""
+    >
 
 
     <EditText
@@ -29,7 +24,8 @@
         android:layout_above="@+id/mdp_checkbox"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="65dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp" />
 
     <CheckBox
         android:text="@string/memo_checkbox"
@@ -47,7 +43,8 @@
         android:id="@+id/mdpoublie_link"
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/button_connect"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,23 +59,45 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
-    <ImageView
+    <Button
+        android:text="@string/fb_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/logo"
-        android:layout_marginBottom="23dp"
-        android:id="@+id/imageView2"
-        android:layout_above="@+id/email"
-        android:layout_alignStart="@+id/mdp_checkbox" />
+        android:id="@+id/button_connectfb"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp" />
+
+    <ImageView  android:id="@+id/profilPicture"
+        android:src="@mipmap/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:text="@string/register_link"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_link"
+        android:layout_marginBottom="27dp"
+        android:linksClickable="true"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_marginEnd="16dp"
+        android:layout_width="140dp"
+        android:layout_above="@+id/button_connectfb"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="@string/connect_button"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_connect"
-        android:layout_marginBottom="22dp"
-        android:layout_above="@+id/button_connectfb"
-        android:layout_alignEnd="@+id/mdpoublie_link"
-        style="@style/Widget.AppCompat.Button.Colored" />
+        style="@style/Widget.AppCompat.Button.Colored"
+
+        android:layout_marginStart="20dp"
+        android:elevation="0dp"
+        android:layout_width="140dp"
+        android:layout_alignBaseline="@+id/register_link"
+        android:layout_alignBottom="@+id/register_link"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

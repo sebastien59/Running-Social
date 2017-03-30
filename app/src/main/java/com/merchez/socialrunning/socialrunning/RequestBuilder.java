@@ -1,5 +1,10 @@
 package com.merchez.socialrunning.socialrunning;
 
+import android.util.Log;
+import android.widget.TextView;
+
+import java.io.File;
+
 import okhttp3.*;
 
 /**
@@ -18,7 +23,23 @@ public class RequestBuilder {
                 .build();
     }
 
-    public static HttpUrl buildURL() {
+    public static RequestBody RegisterBody(File file, String mimeType, String firstname, String lastname, String email, String password, String birthday, String cursorText){
+        final MediaType MEDIA_TYPE = MediaType.parse(mimeType);
+        Log.i("Debug ", mimeType);
+        RequestBody req = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("avatar", file.getName(), RequestBody.create(MEDIA_TYPE, file))
+                .addFormDataPart("firstname", firstname)
+                .addFormDataPart("lastname", lastname)
+                .addFormDataPart("email", email)
+                .addFormDataPart("birthday", birthday)
+                .addFormDataPart("password", password)
+                .addFormDataPart("zone", cursorText)
+                .build();
+
+        return req;
+    }
+
+/*    public static HttpUrl buildURL() {
         return new HttpUrl.Builder()
                 .scheme("https") //http
                 .host("www.somehostname.com")
@@ -30,6 +51,6 @@ public class RequestBuilder {
          * The return URL:
          *  https://www.somehostname.com/pathSegment?param1=value1&encodedName=encodedValue
          */
-    }
+    //}
 
 }
