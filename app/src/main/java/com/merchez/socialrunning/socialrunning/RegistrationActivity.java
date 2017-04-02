@@ -14,9 +14,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ import java.io.IOException;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 
 
 public class RegistrationActivity extends Activity implements View.OnClickListener  {
@@ -76,15 +81,10 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
         addProfilPicture = (ImageView) findViewById(R.id.addProfilPicture);
         profilPicture = (ImageView) findViewById(R.id.profilPicture);
 
-        /*gs.hideKeyboardOnUnfocus(firstname);
-        gs.hideKeyboardOnUnfocus(lastname);
-        gs.hideKeyboardOnUnfocus(email);
-        gs.hideKeyboardOnUnfocus(password);
-        gs.hideKeyboardOnUnfocus(passwordConf);
-        gs.hideKeyboardOnUnfocus(birthday);*/
-
         button_register.setOnClickListener(this);
         addProfilPicture.setOnClickListener(this);
+
+        setupUI(findViewById(R.id.activity_registration));
 
         zone.setMax(99);
         zone.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
@@ -109,6 +109,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
             }
         });
     }
+
 
     @Override
     public void onClick(View view) {
@@ -141,7 +142,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
                 OkHttpClient client= new OkHttpClient();
 
 
-                String response;
+                ResponseBody response;
 
                 try {
                     response = APICall.POST(
@@ -156,8 +157,8 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
                                                         birthdayText,
                                                         zoneText));
 
-                    Log.d("Response", response);
-                    JsonNode json = JSONHelper.StringToJSON(response);
+                    //Log.d("Response", response.string());
+                    JsonNode json = JSONHelper.StringToJSON(response.string());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -239,4 +240,33 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
             );
         }
     }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void setupUI(View view) {
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(RegistrationActivity.this);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
+    }
+
 }

@@ -39,6 +39,11 @@ public class RequestBuilder {
         return req;
     }
 
+    public static RequestBody ImageBody(){
+        return new FormBody.Builder()
+                .build();
+    }
+
 /*    public static HttpUrl buildURL() {
         return new HttpUrl.Builder()
                 .scheme("https") //http

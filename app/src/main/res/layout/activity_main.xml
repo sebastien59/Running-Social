@@ -9,8 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.merchez.socialrunning.socialrunning.MainActivity"
     android:focusableInTouchMode="true"
-    android:clickable="true"
-    android:onClick=""
     >
 
 
