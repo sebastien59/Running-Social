@@ -1,11 +1,9 @@
 package com.merchez.socialrunning.socialrunning;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -25,11 +21,6 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
-import com.mikepenz.materialdrawer.util.DrawerImageLoader;
-import com.mikepenz.materialdrawer.util.DrawerItemViewHelper;
-import com.mikepenz.materialdrawer.util.DrawerUIUtils;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,8 +53,9 @@ public class HomeActivity extends AppCompatActivity {
 
         URL url = null;
         try {
-            attemptImage("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
+            //attemptImage("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
 
+            profil = new ProfileDrawerItem().withIdentifier(1).withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
             SecondaryDrawerItem item1 = new SecondaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home);
             SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_user);
             SecondaryDrawerItem item3 = new SecondaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_create_group).withIcon(FontAwesome.Icon.faw_users);
@@ -99,6 +91,8 @@ public class HomeActivity extends AppCompatActivity {
                             }
                     ).build();
 
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,17 +123,15 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void attemptImage(String url) {
+   /* private void attemptImage(String url) {
 
         new AsyncTask<String, Void, Void>() {
             @Override
             protected Void doInBackground(String... params) {
-                /*try {
-                    response = APICall.POST(
+                try {
+                    response = APICall.GET(
                             client,
-                            HttpUrl.parse(params[0]),
-                            RequestBuilder.ImageBody()
-                            );
+                            HttpUrl.parse(params[0]));
 
                     Log.d("Response", "test test test");
                     //JsonNode json = JSONHelper.StringToJSON(response);
@@ -147,18 +139,20 @@ public class HomeActivity extends AppCompatActivity {
                     Bitmap bmp = BitmapFactory.decodeStream(response.byteStream());
                     d = new BitmapDrawable(getResources(), bmp);
 
-
+                    IProfile profil = new ProfileDrawerItem().withIdentifier(1).withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
 
                     //DrawerImageLoader.getInstance().setImage(R.layout.material_drawer_item_profile, , "Profil");
                     //result.updateItem(profil);
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                }*/
+                }
 
-                profil = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(params[0]);
+
                 return null;
             }
         }.execute(url);
-    }
+    }*/
+
+
 }

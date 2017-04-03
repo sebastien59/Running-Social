@@ -16,12 +16,21 @@ import okhttp3.ResponseBody;
 public class APICall {
 
     //GET network request
-    public static String GET(OkHttpClient client, HttpUrl url) throws IOException {
+    public static ResponseBody GET(OkHttpClient client, HttpUrl url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
         Response response = client.newCall(request).execute();
-        return response.body().string();
+        return response.body();
+    }
+
+    public static ResponseBody GETwithAuthorization(OkHttpClient client, HttpUrl url, String Authorization) throws IOException {
+        Request request = new Request.Builder()
+                .header("Authorization", "Bearer "+Authorization)
+                .url(url)
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body();
     }
 
     //POST network request

@@ -101,7 +101,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         //action à faire quand on clique sur le bouton connexion
                         attemptLogin("https://socialrunning.merchez.com/authenticate");
                         Log.i("debug", "bouton de connexion");
-
                     }else{
                         DialogFragment dialog = new NetworkDialogFragment();
 
@@ -139,6 +138,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         prefEdit.putString("token", json.path("token").asText());
 
 
+                        response = APICall.GETwithAuthorization(client,
+                                                                HttpUrl.parse("http://socialrunning.merchez.com/api/getUser/"+email),
+                                                                json.path("token").asText());
+                        json = JSONHelper.StringToJSON(response.string());
+                        prefEdit.putString("firstname", json.path("firstname").asText());
+                        prefEdit.putString("lastname", json.path("lastname").asText());
+                        prefEdit.putString("birthday", json.path("birthday").asText());
+                        prefEdit.putInt("zone", json.path("zone").asInt());
+                        prefEdit.putString("profilPicture", json.path("profilPicture").asText());
+                        prefEdit.putString("tokenExpiration", json.path("exp").asText());
                         prefEdit.apply();
 
                         Intent homeView = new Intent(MainActivity.this, HomeActivity.class);
@@ -147,7 +156,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         DialogFragment dialog = new ConnectionDialogFragment();
                         dialog.show(getFragmentManager(), "Connexion");
                     }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
