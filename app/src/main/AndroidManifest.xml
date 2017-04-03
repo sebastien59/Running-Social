@@ -30,7 +30,8 @@
             android:screenOrientation="nosensor" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" />
+            android:label="@string/title_activity_home"
+            android:titleTextColor="#FFFFFF"/>
     </application>
 
 </manifest>

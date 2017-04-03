@@ -58,4 +58,5 @@ dependencies {
 
     compile "com.mikepenz:iconics-core:2.8.2@aar"
     compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 }

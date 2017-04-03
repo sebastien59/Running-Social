@@ -53,20 +53,23 @@ public class HomeActivity extends AppCompatActivity {
 
         URL url = null;
         try {
-            //attemptImage("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
 
-            profil = new ProfileDrawerItem().withIdentifier(1).withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon("https://socialrunning.merchez.com/uploads/1490712800042.jpg");
+
+            profil = new ProfileDrawerItem().withIdentifier(1)
+                                            .withName(gs.prefs.getString("firstname","") + " " + gs.prefs.getString("lastname", ""))
+                                            .withEmail(gs.prefs.getString("email",""))
+                                            .withIcon("https://socialrunning.merchez.com/uploads/"+gs.prefs.getString("profilPicture", ""));
             SecondaryDrawerItem item1 = new SecondaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home);
             SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_user);
-            SecondaryDrawerItem item3 = new SecondaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_create_group).withIcon(FontAwesome.Icon.faw_users);
-            SecondaryDrawerItem item4 = new SecondaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_create_race).withIcon(FontAwesome.Icon.faw_android);
-            SecondaryDrawerItem item5 = new SecondaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_groups).withIcon(FontAwesome.Icon.faw_android);
+            SecondaryDrawerItem item3 = new SecondaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_create_group).withIcon(FontAwesome.Icon.faw_plus_circle);
+            SecondaryDrawerItem item4 = new SecondaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_groups).withIcon(FontAwesome.Icon.faw_users);
 
 
             headerResult = new AccountHeaderBuilder()
                     .withActivity(HomeActivity.this)
                     .withHeaderBackground(R.drawable.header)
                     .addProfiles(profil)
+                    .withSelectionListEnabledForSingleProfile(false)
                     .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                         @Override
                         public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
@@ -80,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
                     .withToolbar(toolbar)
                     .withAccountHeader(headerResult)
                     .withActionBarDrawerToggle(true)
-                    .addDrawerItems(item1, item2, item3, item4, item5)
+                    .addDrawerItems(item1, item2, item3, item4)
                     .withOnDrawerItemClickListener(
                             new Drawer.OnDrawerItemClickListener() {
                                 @Override

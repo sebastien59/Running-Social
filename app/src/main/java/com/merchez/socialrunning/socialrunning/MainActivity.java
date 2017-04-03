@@ -53,7 +53,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         gs = (GlobalState) getApplication();
-        client = new OkHttpClient();
+        client = new OkHttpClient.Builder().addNetworkInterceptor(new AuthorizationInterceptor()).build();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -133,14 +134,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     //Log.d("Response", response.string());
                     JsonNode json = JSONHelper.StringToJSON(response.string());
 
-                    if(json.path("token").asText() != ""){
+                    if(!json.path("token").asText().equals("")){
                         SharedPreferences.Editor prefEdit = gs.prefs.edit();
                         prefEdit.putString("token", json.path("token").asText());
+
 
 
                         response = APICall.GETwithAuthorization(client,
                                                                 HttpUrl.parse("http://socialrunning.merchez.com/api/getUser/"+email),
                                                                 json.path("token").asText());
+
                         json = JSONHelper.StringToJSON(response.string());
                         prefEdit.putString("firstname", json.path("firstname").asText());
                         prefEdit.putString("lastname", json.path("lastname").asText());

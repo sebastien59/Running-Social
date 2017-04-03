@@ -24,7 +24,7 @@
     <string name="register_minValueZone">0</string>
     <string name="connection_error_dialog_message">Une erreur de connexion s\'est produite</string>
     <string name="connection_error_dialog_title">Connexion</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">Accueil</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
