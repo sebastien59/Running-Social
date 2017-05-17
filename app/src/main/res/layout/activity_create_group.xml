@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Point de rendez-vous"
         android:ems="10"
         android:layout_marginTop="10dp"
         android:id="@+id/editText3"
@@ -104,24 +104,6 @@
         android:layout_alignEnd="@+id/radioButton" />
 
     <CheckBox
-        android:text="Lundi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:id="@+id/checkBox_lundi"
-        android:layout_below="@+id/btn_Hebdomadaire"
-        android:layout_alignStart="@+id/textView2" />
-
-    <CheckBox
-        android:text="Mardi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox_mardi"
-        android:layout_alignBaseline="@+id/checkBox_lundi"
-        android:layout_alignBottom="@+id/checkBox_lundi"
-        android:layout_alignStart="@+id/radioButton2" />
-
-    <CheckBox
         android:text="Mercredi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,17 +111,8 @@
         android:layout_alignBaseline="@+id/checkBox_jeudi"
         android:layout_alignBottom="@+id/checkBox_jeudi"
         android:layout_toEndOf="@+id/checkBox_mardi"
-        android:layout_marginStart="13dp" />
-
-    <CheckBox
-        android:text="Jeudi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox_jeudi"
-        android:layout_alignBaseline="@+id/checkBox_mardi"
-        android:layout_alignBottom="@+id/checkBox_mardi"
-        android:layout_toEndOf="@+id/checkBox_mercredi"
-        android:layout_marginStart="18dp" />
+        android:layout_marginStart="13dp"
+        android:visibility="invisible" />
 
     <CheckBox
         android:text="Vendredi"
@@ -148,30 +121,73 @@
         android:layout_below="@+id/checkBox_lundi"
         android:layout_alignStart="@+id/btn_Hebdomadaire"
         android:layout_marginTop="21dp"
-        android:id="@+id/checkBox_Vendredi" />
-
-    <CheckBox
-        android:text="Dimanche"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/checkBox_samedi"
-        android:layout_alignEnd="@+id/checkBox_jeudi"
-        android:id="@+id/checkBox_dimanche" />
+        android:id="@+id/checkBox_vendredi"
+        android:visibility="invisible"/>
 
     <CheckBox
         android:text="Samedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox_samedi"
-        android:layout_alignBaseline="@+id/checkBox_Vendredi"
-        android:layout_alignBottom="@+id/checkBox_Vendredi"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBaseline="@+id/checkBox_vendredi"
+        android:layout_alignBottom="@+id/checkBox_vendredi"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/checkBox_Vendredi"
-        android:id="@+id/dateList" />
+    <CheckBox
+        android:text="Lundi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/checkBox_lundi"
+        android:visibility="invisible"
+        android:layout_below="@+id/btn_Hebdomadaire"
+        android:layout_toStartOf="@+id/radioButton" />
+
+    <CheckBox
+        android:text="Mardi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_mardi"
+        android:visibility="invisible"
+        android:layout_above="@+id/checkBox_vendredi"
+        android:layout_alignEnd="@+id/btn_Hebdomadaire" />
+
+    <CheckBox
+        android:text="Jeudi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_jeudi"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/checkBox_mardi"
+        android:layout_alignBottom="@+id/checkBox_mardi"
+        android:layout_alignEnd="@+id/btn_occasionnel" />
+
+    <CheckBox
+        android:text="Dimanche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_dimanche"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/checkBox_samedi"
+        android:layout_alignBottom="@+id/checkBox_samedi"
+        android:layout_toEndOf="@+id/checkBox_samedi" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateList"
+        android:layout_alignTop="@+id/checkBox_mercredi"
+        android:layout_alignStart="@+id/btn_Hebdomadaire" />
+
+    <Button
+        android:text="Créer le parcours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/creaBtn"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/checkBox_vendredi"
+        android:layout_alignEnd="@+id/checkBox_mercredi" />
 
 
 </RelativeLayout>

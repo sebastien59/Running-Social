@@ -120,9 +120,10 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
                 break;
             case R.id.button_register:
-                gs.alerter("Test");
+                registerRequest("https://socialrunning.herokuapp.com/api/register");
 
-                registerRequest("http://merchez.com:3001/api/register");
+                Intent MainIntent = new Intent(this, MainActivity.class);
+                startActivity(MainIntent);
                 break;
         }
     }
@@ -157,7 +158,6 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
                                                         birthdayText,
                                                         zoneText));
 
-                    //Log.d("Response", response.string());
                     JsonNode json = JSONHelper.StringToJSON(response.string());
                 } catch (IOException e) {
                     e.printStackTrace();

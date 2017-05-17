@@ -78,6 +78,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.button_connect:
                     if (gs.verifReseau() == true) {
                         SharedPreferences.Editor prefEdit = gs.prefs.edit();
+                        prefEdit.remove("token");
+
                         if(cbRemember.isChecked()){
                             prefEdit.putString("email", email);
                             prefEdit.putString("password", password);
@@ -87,13 +89,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             prefEdit.putString("password", "");
                             prefEdit.putBoolean("remember", false);
                         }
+
                         prefEdit.apply();
                         //action à faire quand on clique sur le bouton connexion
                         attemptLogin("https://socialrunning.herokuapp.com/authenticate");
 
-                        client = new OkHttpClient.Builder().addNetworkInterceptor(new AuthorizationInterceptor(gs.prefs.getString("token", ""))).build();
-                        attemptgetUser("https://socialrunning.herokuapp.com/api/getUser/");
-                        Log.i("debug", "bouton de connexion");
+
                     }else{
                         DialogFragment dialog = new NetworkDialogFragment();
 
@@ -120,16 +121,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 try {
                         response = APICall.GET(client, HttpUrl.parse(params[0]+""+email));
 
-                        //Log.i("DEBUG", response.string());
                         SharedPreferences.Editor prefEdit = gs.prefs.edit();
                         JsonNode json = JSONHelper.StringToJSON(response.string());
 
+                        Log.i("DEBUG", json.path("firstname").asText());
+
+                        prefEdit.putString("email", json.path("email").asText());
                         prefEdit.putString("firstname", json.path("firstname").asText());
                         prefEdit.putString("lastname", json.path("lastname").asText());
                         prefEdit.putString("birthday", json.path("birthday").asText());
                         prefEdit.putInt("zone", json.path("zone").asInt());
                         prefEdit.putString("profilPicture", json.path("profilPicture").asText());
                         prefEdit.putString("tokenExpiration", json.path("exp").asText());
+
                         prefEdit.apply();
 
                         Intent homeView = new Intent(MainActivity.this, HomeActivity.class);
@@ -158,19 +162,27 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                     //Log.d("Response", response.string());
                     JsonNode json = JSONHelper.StringToJSON(response.string());
-
+                    SharedPreferences.Editor prefEdit = gs.prefs.edit();
                     if(!json.path("token").asText().equals("")){
-                        SharedPreferences.Editor prefEdit = gs.prefs.edit();
                         prefEdit.putString("token", json.path("token").asText());
-                        prefEdit.apply();
                     }else{
+                        prefEdit.putString("token", null);
                         DialogFragment dialog = new ConnectionDialogFragment();
                         dialog.show(getFragmentManager(), "Connexion");
                     }
+                    prefEdit.apply();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                client = new OkHttpClient.Builder().addNetworkInterceptor(new AuthorizationInterceptor(gs.prefs.getString("token", ""))).build();
+                attemptgetUser("https://socialrunning.herokuapp.com/api/getUser/");
+                Log.i("debug", "bouton de connexion");
             }
         }.execute(url);
     }

@@ -59,17 +59,16 @@ public class DrawerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        profil =null;
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
-
         URL url = null;
         try {
-            profil = new ProfileDrawerItem().withIdentifier(1)
-                    .withName(gs.prefs.getString("firstname","") + " " + gs.prefs.getString("lastname", ""))
+            profil = new ProfileDrawerItem()
                     .withEmail(gs.prefs.getString("email",""))
+                    .withName(gs.prefs.getString("firstname","") + " " + gs.prefs.getString("lastname", ""))
                     .withIcon("https://socialrunning.herokuapp.com/uploads/"+gs.prefs.getString("profilPicture", ""));
             SecondaryDrawerItem item1 = new SecondaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home);
             SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_user);
@@ -106,7 +105,6 @@ public class DrawerFragment extends Fragment {
                                             startActivity(HomeView);
                                             break;
                                         case 2: // Mon Compte
-
                                             //Intent SettingsView = new Intent(this, SettingsActivity.class);
                                             //startActivity(SettingsView);
                                             break;

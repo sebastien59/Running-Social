@@ -33,10 +33,12 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:titleTextColor="#FFFFFF" />
+            android:titleTextColor="#FFFFFF"
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="nosensor" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -49,7 +51,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".CreateGroupActivity" android:label="@string/title_activity_create_group"></activity>
+        <activity
+            android:name=".CreateGroupActivity"
+            android:label="@string/title_activity_create_group"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="nosensor" ></activity>
     </application>
 
 </manifest>

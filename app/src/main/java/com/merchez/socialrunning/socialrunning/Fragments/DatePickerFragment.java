@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.merchez.socialrunning.socialrunning.CreateGroupActivity;
 import com.merchez.socialrunning.socialrunning.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -59,7 +60,7 @@ public class DatePickerFragment extends AppCompatDialogFragment implements OnDat
         widget.setOnDateChangedListener(this);
         widget.setSelectionMode(MaterialCalendarView.SELECTION_MODE_MULTIPLE);
 
-        final Activity act= this.getActivity();
+        final CreateGroupActivity act= (CreateGroupActivity) this.getActivity();
 
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.title_activity_dialogs)
@@ -68,25 +69,33 @@ public class DatePickerFragment extends AppCompatDialogFragment implements OnDat
                     public void onClick(DialogInterface dialog, int id) {
                         dates = widget.getSelectedDates();
 
+                        act.setDates(dates);
+                        /*String dateString = "";
                         for (CalendarDay day : dates) {
-                            String dateString = "";
+
+                            if(day.getDay() <10) dateString+="0";
                             dateString+=day.getDay()+"/";
 
                             if(day.getMonth() <10) dateString+="0";
-
                             dateString+=day.getMonth()+"/";
+
                             dateString+=day.getYear();
 
+                            dateString+= "  \n";
                             datesListStr.add(dateString);
-                        }
+                        }*/
 
-                        Log.i("debug", act.toString());
+                        //TextView txt = (TextView) act.findViewById(R.id.dateList);
 
-                        act.setContentView(R.layout.activity_create_group);
-                        StableArrayAdapter dateAdapter = new StableArrayAdapter(act, R.id.groupe_textview, datesListStr );
+                        //txt.setText(dateString);
 
-                        final ListView dateList = (ListView) act.findViewById(R.id.dateList);
-                        dateList.setAdapter(dateAdapter);
+                        //Log.i("debug", act.toString());
+
+                        //act.setContentView(R.layout.activity_create_group);
+                        //StableArrayAdapter dateAdapter = new StableArrayAdapter(act, R.id.groupe_textview, datesListStr );
+
+                        //final ListView dateList = (ListView) act.findViewById(R.id.dateList);
+                        //dateList.setAdapter(dateAdapter);
                         //act.setContentView(dateList);
 
                     }
@@ -94,30 +103,7 @@ public class DatePickerFragment extends AppCompatDialogFragment implements OnDat
                 .create();
     }
 
-    private class StableArrayAdapter extends ArrayAdapter<String> {
 
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  ArrayList<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-    }
 
     public List<CalendarDay> getDates() {
         return dates;
