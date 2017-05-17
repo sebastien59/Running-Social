@@ -33,16 +33,6 @@ public class APICall {
     }
 
 
-
-    public static ResponseBody GETwithAuthorization(OkHttpClient client, HttpUrl url, String Authorization) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        return response.body();
-    }
-
     //POST network request
     public static ResponseBody POST(OkHttpClient client, HttpUrl url, RequestBody body) throws IOException {
         Request request = new Request.Builder()

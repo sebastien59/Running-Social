@@ -9,15 +9,40 @@
     tools:context="com.merchez.socialrunning.socialrunning.HomeActivity"
     >
 
-    <android.support.v7.widget.Toolbar
+    <fragment
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.merchez.socialrunning.socialrunning.Fragments.DrawerFragment"
+        android:id="@+id/fragment2" />
+
+    <EditText
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_marginRight="0dp"
+        android:layout_width="250dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="55dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_above="@+id/map"
         android:layout_alignParentStart="true"
-        android:id="@+id/toolbar"
-        />
+        android:dropDownWidth="130dp"
+        android:layout_width="130dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="8dp" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        tools:context="com.merchez.socialrunning.socialrunning.MapsActivity"
+        android:layout_height="490dp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

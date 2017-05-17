@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.merchez.socialrunning.socialrunning.CreateGroupActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.merchez.socialrunning.socialrunning.Fragments.DrawerFragment"
+        android:layout_alignParentTop="true"
+        android:id="@+id/fragment"
+        android:layout_alignParentStart="true"
+        tools:layout="@layout/fragment_drawer" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:id="@+id/editText3"
+        android:layout_below="@+id/groupeName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="15dp" />
+
+    <RadioButton
+        android:text="Privé (Sur invitation uniquement)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/groupe_textview"
+        android:layout_toEndOf="@+id/groupe_textview"
+        android:layout_marginStart="32dp"
+        android:id="@+id/radioButton"
+        android:layout_marginLeft="15dp"  />
+
+    <TextView
+        android:text="Entrainement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioButton2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:text="Groupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/groupe_textview"
+        android:textSize="18sp"
+        android:layout_below="@+id/editText3"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+    <Button
+        android:text="Hebdomadaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_Hebdomadaire"
+        android:layout_marginStart="30dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Nom du groupe"
+        android:ems="10"
+        android:layout_marginTop="80dp"
+        android:id="@+id/groupeName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_alignEnd="@+id/radioButton" />
+
+    <RadioButton
+        android:text="Public (Visible sur la carte)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:id="@+id/radioButton2"
+        android:layout_below="@+id/radioButton"
+        android:layout_alignStart="@+id/radioButton" />
+
+    <Button
+        android:text="Occasionnel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_occasionnel"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBaseline="@+id/btn_Hebdomadaire"
+        android:layout_alignBottom="@+id/btn_Hebdomadaire"
+        android:layout_alignEnd="@+id/radioButton" />
+
+    <CheckBox
+        android:text="Lundi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/checkBox_lundi"
+        android:layout_below="@+id/btn_Hebdomadaire"
+        android:layout_alignStart="@+id/textView2" />
+
+    <CheckBox
+        android:text="Mardi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_mardi"
+        android:layout_alignBaseline="@+id/checkBox_lundi"
+        android:layout_alignBottom="@+id/checkBox_lundi"
+        android:layout_alignStart="@+id/radioButton2" />
+
+    <CheckBox
+        android:text="Mercredi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_mercredi"
+        android:layout_alignBaseline="@+id/checkBox_jeudi"
+        android:layout_alignBottom="@+id/checkBox_jeudi"
+        android:layout_toEndOf="@+id/checkBox_mardi"
+        android:layout_marginStart="13dp" />
+
+    <CheckBox
+        android:text="Jeudi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_jeudi"
+        android:layout_alignBaseline="@+id/checkBox_mardi"
+        android:layout_alignBottom="@+id/checkBox_mardi"
+        android:layout_toEndOf="@+id/checkBox_mercredi"
+        android:layout_marginStart="18dp" />
+
+    <CheckBox
+        android:text="Vendredi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox_lundi"
+        android:layout_alignStart="@+id/btn_Hebdomadaire"
+        android:layout_marginTop="21dp"
+        android:id="@+id/checkBox_Vendredi" />
+
+    <CheckBox
+        android:text="Dimanche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/checkBox_samedi"
+        android:layout_alignEnd="@+id/checkBox_jeudi"
+        android:id="@+id/checkBox_dimanche" />
+
+    <CheckBox
+        android:text="Samedi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox_samedi"
+        android:layout_alignBaseline="@+id/checkBox_Vendredi"
+        android:layout_alignBottom="@+id/checkBox_Vendredi"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/checkBox_Vendredi"
+        android:id="@+id/dateList" />
+
+
+</RelativeLayout>
